@@ -2,4 +2,5 @@
     <string name="app_name">GitBuddy</string>
     <string name="github_username">Github Username</string>
     <string name="avatar_sample">Sample Avatar</string>
+    <string name="github_name">Github Name</string>
 </resources>

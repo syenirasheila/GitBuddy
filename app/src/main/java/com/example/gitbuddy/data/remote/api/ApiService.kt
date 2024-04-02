@@ -4,31 +4,50 @@ import com.example.gitbuddy.BuildConfig
 import com.example.gitbuddy.data.remote.model.DetailUserResponse
 import com.example.gitbuddy.data.remote.model.GithubResponse
 import com.example.gitbuddy.data.remote.model.ItemsItem
-import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Headers
+import retrofit2.http.Header
 import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.QueryMap
+
 
 interface ApiService {
 
-    @Headers("Authorization: token ${BuildConfig.TOKEN}", "UserResponse-Agent: request")
-    @GET("search/user")
-    suspend fun searchGithubUser(@Query("q") q:String): Call<GithubResponse>
-
-    @Headers("Authorization: token ${BuildConfig.TOKEN}", "UserResponse-Agent: request")
+    @JvmSuppressWildcards
     @GET("users")
-    suspend fun userList(): GithubResponse
+    suspend fun getUserGithub(
+        @Header("Authorization")
+        authorization: String = BuildConfig.TOKEN
+    ): MutableList<ItemsItem>
 
-    @Headers("Authorization: token ${BuildConfig.TOKEN}", "UserResponse-Agent: request")
+    @JvmSuppressWildcards
     @GET("users/{username}")
-    suspend fun detailGithubUser(@Path("username") username:String): Call<DetailUserResponse>
+    suspend fun getDetailUserGithub(
+        @Path("username") username: String,
+        @Header("Authorization")
+        authorization: String = BuildConfig.TOKEN
+    ): DetailUserResponse
 
-    @Headers("Authorization: token ${BuildConfig.TOKEN}", "UserResponse-Agent: request")
-    @GET("user/{username}/followers")
-    suspend fun getFollowerList(@Path("username") username: String): Call<List<ItemsItem>>
+    @JvmSuppressWildcards
+    @GET("/users/{username}/followers")
+    suspend fun getFollowersUserGithub(
+        @Path("username") username: String,
+        @Header("Authorization")
+        authorization: String = BuildConfig.TOKEN
+    ): MutableList<ItemsItem>
 
-    @Headers("Authorization: token ${BuildConfig.TOKEN}", "UserResponse-Agent: request")
-    @GET("user/{username}/following")
-    suspend fun getFollowingList(@Path("username") username: String): Call<List<ItemsItem>>
+    @JvmSuppressWildcards
+    @GET("/users/{username}/following")
+    suspend fun getFollowingUserGithub(
+        @Path("username") username: String,
+        @Header("Authorization")
+        authorization: String = BuildConfig.TOKEN
+    ): MutableList<ItemsItem>
+
+    @JvmSuppressWildcards
+    @GET("search/users")
+    suspend fun searchUserGithub(
+        @QueryMap params: Map<String, Any>,
+        @Header("Authorization")
+        authorization: String = BuildConfig.TOKEN
+    ): GithubResponse
 }

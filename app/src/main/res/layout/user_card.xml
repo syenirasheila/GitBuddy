@@ -5,21 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_marginHorizontal="8dp"
-    android:layout_marginVertical="8dp"
-    app:cardCornerRadius="8dp"
+    android:layout_marginHorizontal="6dp"
+    android:layout_marginVertical="2dp"
+    app:cardCornerRadius="10dp"
     app:cardElevation="2dp"
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp">
+        android:padding="20dp">
 
         <ImageView
             android:id="@+id/iv_item_avatar"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:contentDescription="@string/avatar_sample"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +29,7 @@
             android:id="@+id/tv_item_username"
             style="@style/TextStyle.TITLE"
             android:layout_width="0dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="20dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@id/iv_item_avatar"
             app:layout_constraintEnd_toEndOf="parent"

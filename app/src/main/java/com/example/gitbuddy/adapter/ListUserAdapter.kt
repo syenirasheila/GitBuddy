@@ -14,7 +14,7 @@ class ListUserAdapter (private val listUser : MutableList<ItemsItem> = mutableLi
     RecyclerView.Adapter<ListUserAdapter.UserViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(listUser: MutableList<ItemsItem>){
+    fun setData(listUser : MutableList<ItemsItem>){
         this.listUser.clear()
         this.listUser.addAll(listUser)
         notifyDataSetChanged()

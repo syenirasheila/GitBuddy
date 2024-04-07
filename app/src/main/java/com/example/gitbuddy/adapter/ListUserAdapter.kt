@@ -10,7 +10,10 @@ import com.example.gitbuddy.R
 import com.example.gitbuddy.data.remote.model.ItemsItem
 import com.example.gitbuddy.databinding.UserCardBinding
 
-class ListUserAdapter (private val listUser : MutableList<ItemsItem> = mutableListOf()) :
+class ListUserAdapter (
+    private val listUser : MutableList<ItemsItem> = mutableListOf(),
+    private val listener:(ItemsItem) -> Unit ):
+
     RecyclerView.Adapter<ListUserAdapter.UserViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
@@ -43,6 +46,10 @@ class ListUserAdapter (private val listUser : MutableList<ItemsItem> = mutableLi
     override fun getItemCount(): Int = listUser.size
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        holder.bind(listUser[position])
+        val item = listUser[position]
+        holder.bind(item)
+        holder.itemView.setOnClickListener{
+            listener(item)
+        }
     }
 }

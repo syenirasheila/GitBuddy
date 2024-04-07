@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.MainActivity">
+    tools:context=".ui.main.MainActivity"
+    android:theme="@style/Theme.GitBuddy">
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -14,7 +15,7 @@
         tools:listitem="@layout/user_card"/>
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progressBarMain"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

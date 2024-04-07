@@ -3,4 +3,11 @@
     <string name="github_username">Github Username</string>
     <string name="avatar_sample">Sample Avatar</string>
     <string name="github_name">Github Name</string>
+    <string name="detailsample_avatar">Detail Sample Avatar</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="repository">Repository</string>
+    <string name="location">Location</string>
+    <string name="company">Company</string>
+    <string name="tab_layout">Tab Layout</string>
 </resources>

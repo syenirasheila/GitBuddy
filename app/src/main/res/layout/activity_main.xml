@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
     tools:context=".ui.main.MainActivity"
     android:theme="@style/Theme.GitBuddy">
@@ -14,16 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        style="@style/TextStyle.HINT"
         android:inputType="text"
         android:maxLines="1"
         android:iconifiedByDefault="false"
         android:autofillHints="username"
         android:background="@drawable/sv_background"
         android:queryBackground="@android:color/transparent"
-        android:queryHint="@string/search_text"
+        android:theme="@style/SearchViewTextStyle"
         app:searchIcon="@drawable/ic_search"
         app:closeIcon="@drawable/ic_searchclose"
+        app:defaultQueryHint="@string/search_text"
         app:iconifiedByDefault="false"
         app:layout_constraintBottom_toTopOf="@id/rv_users"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,18 +39,18 @@
         app:layout_constraintTop_toBottomOf="@id/sv_user"
         tools:listitem="@layout/user_card"/>
 
-    <ImageView
-        android:id="@+id/iv_doodle_find"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/user_notfound"
-        android:src="@drawable/ic_usernotfound"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="invisible" />
+<!--    <ImageView-->
+<!--        android:id="@+id/iv_user_notfound"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:contentDescription="@string/user_notfound"-->
+<!--        android:src="@drawable/ic_usernotfound"-->
+<!--        android:visibility="visible"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:visibility="invisible" />-->
 
     <ProgressBar
         android:id="@+id/progressBarMain"

@@ -54,10 +54,10 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-        private fun showImage(isImageVisible: Boolean) {
-            binding.ivNotFound.visibility = if (isImageVisible) View.INVISIBLE else View.VISIBLE
-            binding.tvNotFound.visibility = if (isImageVisible) View.INVISIBLE else View.VISIBLE
-        }
+//        private fun showImage(isImageVisible: Boolean) {
+//            binding.ivNotFound.visibility = if (isImageVisible) View.INVISIBLE else View.VISIBLE
+//            binding.tvNotFound.visibility = if (isImageVisible) View.INVISIBLE else View.VISIBLE
+//        }
 
         mainViewModel.userResult.observe(this){
             when(it) {

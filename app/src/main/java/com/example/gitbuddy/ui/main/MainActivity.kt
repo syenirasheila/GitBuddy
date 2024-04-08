@@ -40,6 +40,25 @@ class MainActivity : AppCompatActivity() {
         binding.rvUsers.setHasFixedSize(true)
         binding.rvUsers.adapter = adapter
 
+        binding.svUser.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                val userQuery = query.toString()
+                mainViewModel.getUser(userQuery)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val userQuery = newText.toString()
+                mainViewModel.getUser(userQuery)
+                return true
+            }
+
+        })
+        private fun showImage(isImageVisible: Boolean) {
+            binding.ivNotFound.visibility = if (isImageVisible) View.INVISIBLE else View.VISIBLE
+            binding.tvNotFound.visibility = if (isImageVisible) View.INVISIBLE else View.VISIBLE
+        }
+
         mainViewModel.userResult.observe(this){
             when(it) {
                 is UserResult.Success<*> -> {

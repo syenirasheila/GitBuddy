@@ -22,7 +22,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class DetailUserActivity :AppCompatActivity() {
 
     private val viewModel by viewModels<DetailViewModel>()
-    private lateinit var binding:ActivityDetailuserBinding
+    private lateinit var binding : ActivityDetailuserBinding
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)

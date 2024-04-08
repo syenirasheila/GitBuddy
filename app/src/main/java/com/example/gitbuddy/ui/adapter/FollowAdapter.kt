@@ -1,4 +1,4 @@
-package com.example.gitbuddy.adapter
+package com.example.gitbuddy.ui.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -10,11 +10,11 @@ import com.example.gitbuddy.R
 import com.example.gitbuddy.data.remote.model.ItemsItem
 import com.example.gitbuddy.databinding.UserCardBinding
 
-class ListUserAdapter (
+class FollowAdapter (
     private val listUser : MutableList<ItemsItem> = mutableListOf(),
     private val listener:(ItemsItem) -> Unit ):
 
-    RecyclerView.Adapter<ListUserAdapter.UserViewHolder>() {
+    RecyclerView.Adapter<FollowAdapter.ViewPagerHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun setData(listUser : MutableList<ItemsItem>){
@@ -23,7 +23,7 @@ class ListUserAdapter (
         notifyDataSetChanged()
     }
 
-    class UserViewHolder(private val binding: UserCardBinding) :
+    class ViewPagerHolder(private val binding: UserCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(user: ItemsItem) {
             binding.tvItemUsername.text = user.login
@@ -38,14 +38,14 @@ class ListUserAdapter (
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerHolder {
         val userBinding = UserCardBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return UserViewHolder(userBinding)
+        return ViewPagerHolder(userBinding)
     }
 
     override fun getItemCount(): Int = listUser.size
 
-    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewPagerHolder, position: Int) {
         val item = listUser[position]
         holder.bind(item)
         holder.itemView.setOnClickListener{

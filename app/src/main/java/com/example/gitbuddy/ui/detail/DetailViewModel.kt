@@ -15,12 +15,14 @@ import kotlinx.coroutines.launch
 class DetailViewModel:ViewModel () {
 
     val detailUserResult = MutableLiveData<UserResult>()
+    val followerUserResult = MutableLiveData<UserResult>()
+    val followingUserResult= MutableLiveData<UserResult>()
     fun getDetailUser(username: String?) {
         viewModelScope.launch{
             flow{
                 val response = ApiConfig
                     .getApiService()
-                    .getDetailUserGithub("username")
+                    .getDetailUserGithub(username)
                 emit(response)
             }.onStart {
                 detailUserResult.value = UserResult.Loading(true)
@@ -32,6 +34,48 @@ class DetailViewModel:ViewModel () {
                 it.printStackTrace()
             }.collect{
                 detailUserResult.value = UserResult.Success(it)
+            }
+        }
+    }
+
+    fun getFollowers(username: String?){
+        viewModelScope.launch{
+            flow{
+                val response = ApiConfig
+                    .getApiService()
+                    .getFollowersUserGithub(username)
+                emit(response)
+            }.onStart {
+                followerUserResult.value = UserResult.Loading(true)
+            }.onCompletion {
+                followerUserResult.value = UserResult.Loading(false)
+            }.catch {
+                followerUserResult.value = UserResult.Error(it)
+                Log.e("error", it.toString())
+                it.printStackTrace()
+            }.collect{
+                followerUserResult.value = UserResult.Success(it)
+            }
+        }
+    }
+
+    fun getFollowing(username: String?){
+        viewModelScope.launch{
+            flow{
+                val response = ApiConfig
+                    .getApiService()
+                    .getFollowingUserGithub(username)
+                emit(response)
+            }.onStart {
+                followingUserResult.value = UserResult.Loading(true)
+            }.onCompletion {
+                followingUserResult.value = UserResult.Loading(false)
+            }.catch {
+                followingUserResult.value = UserResult.Error(it)
+                Log.e("error", it.toString())
+                it.printStackTrace()
+            }.collect{
+                followingUserResult.value = UserResult.Success(it)
             }
         }
     }

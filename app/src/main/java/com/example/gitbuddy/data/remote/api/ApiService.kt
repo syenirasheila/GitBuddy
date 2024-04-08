@@ -22,7 +22,7 @@ interface ApiService {
     @JvmSuppressWildcards
     @GET("users/{username}")
     suspend fun getDetailUserGithub(
-        @Path("username") username: String,
+        @Path("username") username: String?,
         @Header("Authorization")
         authorization: String = BuildConfig.TOKEN
     ): DetailUserResponse
@@ -30,7 +30,7 @@ interface ApiService {
     @JvmSuppressWildcards
     @GET("/users/{username}/followers")
     suspend fun getFollowersUserGithub(
-        @Path("username") username: String,
+        @Path("username") username: String?,
         @Header("Authorization")
         authorization: String = BuildConfig.TOKEN
     ): MutableList<ItemsItem>
@@ -38,7 +38,7 @@ interface ApiService {
     @JvmSuppressWildcards
     @GET("/users/{username}/following")
     suspend fun getFollowingUserGithub(
-        @Path("username") username: String,
+        @Path("username") username: String?,
         @Header("Authorization")
         authorization: String = BuildConfig.TOKEN
     ): MutableList<ItemsItem>

@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
     tools:context=".ui.detail.DetailUserActivity"
     android:theme="@style/Theme.GitBuddy">
 
     <ImageView
         android:id="@+id/iv_avatar"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:layout_marginTop="20dp"
         android:contentDescription="@string/detailsample_avatar"
         app:layout_constraintBottom_toTopOf="@id/tv_name"
@@ -71,7 +73,7 @@
         style="@style/TextStyle.VALUE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="18dp"
         app:layout_constraintBottom_toTopOf="@id/tv_repository_label"
         app:layout_constraintEnd_toStartOf="@id/tv_following"
         app:layout_constraintStart_toEndOf="@id/tv_followers"
@@ -115,30 +117,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="18dp"
         android:drawablePadding="8dp"
         android:gravity="center"
         app:drawableLeftCompat="@drawable/ic_location"
-        app:layout_constraintBottom_toTopOf="@id/tv_company"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_following_label"
+        app:layout_constraintTop_toBottomOf="@id/tv_repository_label"
         tools:text="@string/location" />
-
-    <TextView
-        android:id="@+id/tv_company"
-        style="@style/TextStyle.SUBTITLE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
-        android:drawablePadding="8dp"
-        android:gravity="center"
-        app:drawableLeftCompat="@drawable/ic_company"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_location"
-        tools:text="@string/company" />
 
     <ProgressBar
         android:id="@+id/progressBarDetail"
@@ -153,24 +139,24 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
 
-<!--    <com.google.android.material.tabs.TabLayout-->
-<!--        android:id="@+id/tab_layout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="12dp"-->
-<!--        android:contentDescription="@string/tab_layout"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/view_pager"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/tv_company"-->
-<!--        app:tabIndicatorColor="@color/navy_blue"-->
-<!--        app:tabSelectedTextColor="@color/navy_blue"/>-->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:contentDescription="@string/tab_layout"
+        app:layout_constraintBottom_toTopOf="@id/view_pager"
+        app:layout_constraintTop_toBottomOf="@id/tv_location"
+        app:tabIndicatorColor="@color/navy_blue"
+        app:tabSelectedTextColor="@color/navy_blue"/>
 
-<!--    <androidx.viewpager2.widget.ViewPager2-->
-<!--        android:id="@+id/view_pager"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_weight="1"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/tab_layout"/>-->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="wrap_content"

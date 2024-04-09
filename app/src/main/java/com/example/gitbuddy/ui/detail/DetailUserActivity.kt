@@ -35,6 +35,10 @@ class DetailUserActivity :AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val username = intent.getStringExtra("username") ?: ""
 
+        binding.btnBack.setOnClickListener {
+            onBackPressed()
+        }
+
         viewModel.detailUserResult.observe(this){
             when(it) {
                 is UserResult.Success<*> -> {
@@ -111,6 +115,7 @@ class DetailUserActivity :AppCompatActivity() {
         })
 
         viewModel.getFollowers(username)
+
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){

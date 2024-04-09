@@ -131,7 +131,7 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminateTint="@color/navy_blue"
+        android:indeterminateTint="@color/lavender"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -147,8 +147,8 @@
         android:contentDescription="@string/tab_layout"
         app:layout_constraintBottom_toTopOf="@id/view_pager"
         app:layout_constraintTop_toBottomOf="@id/tv_location"
-        app:tabIndicatorColor="@color/navy_blue"
-        app:tabSelectedTextColor="@color/navy_blue"/>
+        app:tabIndicatorColor="@color/purple_200"
+        app:tabSelectedTextColor="@color/purple_200"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"

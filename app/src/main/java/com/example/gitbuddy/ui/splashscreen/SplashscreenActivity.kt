@@ -22,9 +22,20 @@ class SplashscreenActivity: AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+
         Handler(Looper.getMainLooper()).postDelayed({
             goToMainActivity()
-        }, 3000L)
+        }, 1000L)
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Handler(Looper.getMainLooper()).removeCallbacksAndMessages(null)
     }
 
     private fun goToMainActivity() {

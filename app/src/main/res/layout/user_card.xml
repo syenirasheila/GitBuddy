@@ -23,18 +23,20 @@
             android:contentDescription="@string/avatar_sample"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck"
             tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/tv_item_username"
             style="@style/TextStyle.TITLE"
             android:layout_width="0dp"
-            android:layout_marginStart="20dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             app:layout_constraintBottom_toBottomOf="@id/iv_item_avatar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_item_avatar"
             app:layout_constraintTop_toTopOf="@id/iv_item_avatar"
+            tools:ignore="TextContrastCheck"
             tools:text="@string/github_username" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -91,7 +91,7 @@ class DetailUserActivity :AppCompatActivity() {
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
                 if(tab?.position == 0){
-                    viewModel.getFollowers(username)
+                   viewModel.getFollowers(username)
                 } else {
                     viewModel.getFollowing(username)
                 }
@@ -112,6 +112,7 @@ class DetailUserActivity :AppCompatActivity() {
                     viewModel.getFollowing(username)
                 }
             }
+
         })
 
         viewModel.getFollowers(username)

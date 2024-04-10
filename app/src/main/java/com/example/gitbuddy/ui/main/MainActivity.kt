@@ -4,6 +4,7 @@ package com.example.gitbuddy.ui.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
@@ -40,29 +41,30 @@ class MainActivity : AppCompatActivity() {
         binding.rvUsers.setHasFixedSize(true)
         binding.rvUsers.adapter = adapter
 
+
         binding.svUser.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 val userQuery = query.toString()
+                binding.svUser.clearFocus()
                 mainViewModel.getUser(userQuery)
                 return true
             }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                val userQuery = newText.toString()
-                mainViewModel.getUser(userQuery)
-                return true
-            }
+            override fun onQueryTextChange(newText: String?): Boolean = false
 
         })
-//        private fun showImage(isImageVisible: Boolean) {
-//            binding.ivNotFound.visibility = if (isImageVisible) View.INVISIBLE else View.VISIBLE
-//            binding.tvNotFound.visibility = if (isImageVisible) View.INVISIBLE else View.VISIBLE
-//        }
 
-        mainViewModel.userResult.observe(this){
+
+        mainViewModel.userResult.observe(this) {
             when(it) {
                 is UserResult.Success<*> -> {
-                    adapter.setData(it.data as MutableList<ItemsItem>)
+                    val users = it.data as MutableList<ItemsItem>
+                    if (users.isEmpty()) {
+                        showNotFound(true)
+                    } else {
+                        showNotFound(false)
+                        adapter.setData(users)
+                    }
                 }
                 is UserResult.Error -> {
                     Toast.makeText(this,it.exception.message.toString(), Toast.LENGTH_SHORT).show()
@@ -73,6 +75,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
         mainViewModel.getGithubUser()
-
+    }
+    private fun showNotFound(isDataNotFound: Boolean) {
+        binding.apply {
+            if (isDataNotFound) {
+                rvUsers.visibility = View.GONE
+                ivNotfound.visibility = View.VISIBLE
+            } else {
+                rvUsers.visibility = View.VISIBLE
+                ivNotfound.visibility = View.GONE
+            }
+        }
     }
 }

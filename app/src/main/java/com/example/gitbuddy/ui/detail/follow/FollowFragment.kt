@@ -11,7 +11,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gitbuddy.data.remote.model.ItemsItem
 import com.example.gitbuddy.databinding.FragmentFollowBinding
-import com.example.gitbuddy.ui.adapter.FollowAdapter
 import com.example.gitbuddy.ui.detail.DetailViewModel
 import com.example.gitbuddy.utils.UserResult
 

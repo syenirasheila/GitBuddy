@@ -12,7 +12,6 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.gitbuddy.R
 import com.example.gitbuddy.data.remote.model.DetailUserResponse
 import com.example.gitbuddy.databinding.ActivityDetailuserBinding
-import com.example.gitbuddy.ui.adapter.DetailUserAdapter
 import com.example.gitbuddy.ui.detail.follow.FollowFragment
 import com.example.gitbuddy.utils.UserResult
 import com.google.android.material.tabs.TabLayout

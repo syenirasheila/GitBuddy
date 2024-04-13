@@ -40,7 +40,7 @@ class MainViewModel:ViewModel() {
             flow{
                 val response = ApiConfig
                     .getApiService()
-                    .searchUserGithub(mapOf( "q" to username, "per_page" to 10))
+                    .searchUserGithub(username, 10)
                 emit(response)
             }.onStart {
                 userResult.value = UserResult.Loading(true)

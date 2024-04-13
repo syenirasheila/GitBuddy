@@ -1,4 +1,4 @@
-package com.example.gitbuddy.ui.adapter
+package com.example.gitbuddy.ui.detail.follow
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

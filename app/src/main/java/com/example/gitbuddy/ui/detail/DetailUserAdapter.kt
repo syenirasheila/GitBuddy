@@ -1,4 +1,4 @@
-package com.example.gitbuddy.ui.adapter
+package com.example.gitbuddy.ui.detail
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

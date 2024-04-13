@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.gitbuddy.ui.adapter.ListUserAdapter
 import com.example.gitbuddy.data.remote.model.ItemsItem
 import com.example.gitbuddy.databinding.ActivityMainBinding
 import com.example.gitbuddy.ui.detail.DetailUserActivity

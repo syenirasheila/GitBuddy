@@ -8,11 +8,9 @@
     <string name="following">Following</string>
     <string name="repository">Repository</string>
     <string name="location">Location</string>
-    <string name="company">Company</string>
     <string name="tab_layout">Tab layout</string>
     <string name="detail_activity">Detail</string>
     <string name="search_text">Search user</string>
     <string name="user_notfound">User not found</string>
     <string name="back_btn">Back button</string>
-    <string name="searchbar_hint">Search user</string>
 </resources>

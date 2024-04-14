@@ -9,38 +9,21 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.gitbuddy.R
 import com.example.gitbuddy.data.remote.model.ItemsItem
 import com.example.gitbuddy.databinding.UserCardBinding
+import com.example.gitbuddy.utils.UserDiffUtils
 
-class ListUserAdapter (
-
-    private val listener:(ItemsItem) -> Unit ):
+class ListUserAdapter (private val listener:(ItemsItem) -> Unit ):
 
     RecyclerView.Adapter<ListUserAdapter.UserViewHolder>() {
 
     private val listUser : MutableList<ItemsItem> = mutableListOf()
 
-//    fun setData(listUser : MutableList<ItemsItem>){
-//        this.listUser.clear()
-//        this.listUser.addAll(listUser)
-//        notifyDataSetChanged()
-//    }
-
         fun setData(newList: MutableList<ItemsItem>) {
-            val diffCallback = UserDiffCallback(listUser, newList)
+            val diffCallback = UserDiffUtils(listUser, newList)
             val diffResult = DiffUtil.calculateDiff(diffCallback)
 
             listUser.clear()
             listUser.addAll(newList)
             diffResult.dispatchUpdatesTo(this)
-        }
-
-        class UserDiffCallback(private val oldList: List<ItemsItem>, private val newList: List<ItemsItem>) : DiffUtil.Callback() {
-            override fun getOldListSize(): Int = oldList.size
-            override fun getNewListSize(): Int = newList.size
-            override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
-                oldList[oldItemPosition].id == newList[newItemPosition].id // Assuming id is unique
-
-            override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
-                oldList[oldItemPosition] == newList[newItemPosition]
         }
 
         class UserViewHolder(private val binding: UserCardBinding) :

@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="10dp"
-    tools:context=".ui.main.MainActivity">
+    tools:context=".ui.favorite.FavoriteActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/mainBarLayout"
+        android:id="@+id/favoriteBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/appbar_bottom_round"
         app:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,74 +19,55 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="20dp">
+            android:padding="10dp">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/mainToolbar"
+                android:id="@+id/favoriteToolbar"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="2dp"
                 android:background="?attr/colorPrimary"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/sv_user"/>
-
-            <TextView
-                android:id="@+id/tv_logo"
-                style="@style/TextStyle.LOGO"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="@string/app_name"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@id/sv_user"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
-                tools:ignore="NotSibling,TextContrastCheck" />
-
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/sv_user"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints="username"
-                android:background="@drawable/sv_background"
-                android:iconifiedByDefault="false"
-                android:inputType="text"
-                android:maxLines="1"
-                android:queryBackground="@android:color/transparent"
-                android:theme="@style/SearchViewTextStyle"
-                app:closeIcon="@drawable/ic_searchclose"
-                app:defaultQueryHint="@string/search_text"
-                app:iconifiedByDefault="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/mainToolbar"
-                app:searchIcon="@drawable/ic_search" />
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
             <ImageButton
-                android:id="@+id/btn_favorite"
+                android:id="@+id/btn_back"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:contentDescription="@string/btn_favorite"
-                android:src="@drawable/ic_main_favorited"
-                app:layout_constraintBottom_toTopOf="@id/sv_user"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.99"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:background="@null"
+                android:contentDescription="@string/back_btn"
+                android:src="@drawable/ic_back"
+                app:layout_constraintEnd_toStartOf="@id/tv_favorite"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5"
-                tools:ignore="ImageContrastCheck" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:ignore="RedundantDescriptionCheck,ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/tv_favorite"
+                style="@style/TextStyle.TITLE2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/favorite_activity"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.3"
+                tools:ignore="NotSibling,TextContrastCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_users"
@@ -97,25 +77,25 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mainBarLayout"
+        app:layout_constraintTop_toBottomOf="@id/favoriteBarLayout"
         tools:listitem="@layout/user_card"/>
 
     <ImageView
-        android:id="@+id/iv_notfound"
+        android:id="@+id/iv_nofavorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/user_notfound"
-        android:src="@drawable/ic_notfound"
+        android:contentDescription="@string/nofavorite_users"
+        android:src="@drawable/ic_nofavorite"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mainBarLayout"
+        app:layout_constraintTop_toBottomOf="@id/favoriteBarLayout"
         tools:ignore="ImageContrastCheck"
         tools:visibility="visible" />
 
     <ProgressBar
-        android:id="@+id/progressBarMain"
+        android:id="@+id/progressBarFavorite"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -123,6 +103,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mainBarLayout"/>
+        app:layout_constraintTop_toBottomOf="@id/favoriteBarLayout"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

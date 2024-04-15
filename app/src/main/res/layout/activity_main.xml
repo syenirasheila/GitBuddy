@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/appbar_bottom_round"
+        style = "@style/AppBarStyle"
         app:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +43,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:text="@string/app_name"
-                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@id/mainToolbar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -71,6 +71,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/mainToolbar"
                 app:searchIcon="@drawable/ic_search" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:layout_marginEnd="10dp"
+                android:thumb="@drawable/ic_thumb"
+                app:layout_constraintBottom_toBottomOf="@id/mainToolbar"
+                app:layout_constraintEnd_toStartOf="@id/btn_favorite"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                app:track="@drawable/ic_track" />
 
             <ImageButton
                 android:id="@+id/btn_favorite"
@@ -119,9 +134,9 @@
     <ProgressBar
         android:id="@+id/progressBarMain"
         style="?android:attr/progressBarStyle"
+        android:indeterminateTint="@color/lavender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminateTint="@color/lavender"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

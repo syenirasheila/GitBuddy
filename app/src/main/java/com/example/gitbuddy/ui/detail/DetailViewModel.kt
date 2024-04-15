@@ -22,9 +22,6 @@ class DetailViewModel (application: Application) :ViewModel () {
     val followerUserResult = MutableLiveData<UserResult>()
     val followingUserResult= MutableLiveData<UserResult>()
     private val mFavoriteUserRepository : FavoriteRepository = FavoriteRepository(application)
-//    val favoriteResultSuccess = MutableLiveData<Boolean>()
-//    val favoriteResultDelete = MutableLiveData<Boolean>()
-//    private var isFavorite = false
 
     fun getDetailUser(username: String?) {
         viewModelScope.launch{
@@ -98,30 +95,5 @@ class DetailViewModel (application: Application) :ViewModel () {
     }
 
     fun getFavoritedByUsername(username: String): LiveData<UserEntity> = mFavoriteUserRepository.getFavoritedByUsername(username)
-
-//    fun setFavorited(user: UserEntity?) {
-//        viewModelScope.launch {
-//            user?.let {
-//                if (isFavorite) {
-//                    deleteFavoritedUser(user)
-//                    favoriteResultDelete.value = true
-//                } else {
-//                    insertFavoritedUser(user)
-//                    favoriteResultSuccess.value = true
-//                }
-//            }
-//            isFavorite = !isFavorite
-//        }
-//    }
-//
-//    fun getFavorited(username: String, listenFavorite: () -> Unit){
-//        viewModelScope.launch {
-//            val user = getFavoritedByUsername(username)
-//            user.let {
-//                listenFavorite()
-//                isFavorite = true
-//            }
-//        }
-//    }
 
 }

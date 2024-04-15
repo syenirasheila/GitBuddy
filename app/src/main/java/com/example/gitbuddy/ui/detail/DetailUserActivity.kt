@@ -1,5 +1,6 @@
 package com.example.gitbuddy.ui.detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -35,14 +36,20 @@ class DetailUserActivity :AppCompatActivity() {
 
         setContentView(binding.root)
 
-        supportActionBar?.title = title
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = title
         val username = intent.getStringExtra("username") ?: ""
         val avatarUrl = intent.getStringExtra("avatarUrl")
+        val userUrl = intent.getStringExtra("userUrl")
 
         binding.btnBack.setOnClickListener {
             onBackPressed()
         }
+
+        binding.btnShare.setOnClickListener{
+            shareUser(username,userUrl)
+        }
+
 
         viewModel.detailUserResult.observe(this){
             when(it) {
@@ -135,23 +142,12 @@ class DetailUserActivity :AppCompatActivity() {
                 }
             }
         }
-//        val user = intent.getParcelableExtra<UserEntity>("username")
-//
-//        binding.fabFavorite.setOnClickListener {
-//            viewModel.setFavorited(user)
-//
-//        }
-//
-//        viewModel.getFavorited(username){
-//            binding.fabFavorite.setImageDrawable(ContextCompat.getDrawable(binding.fabFavorite.context, R.drawable.ic_favorite_border))
-//        }
-//
-//        viewModel.favoriteResultSuccess.observe(this) {
-//            binding.fabFavorite.setImageDrawable(ContextCompat.getDrawable(binding.fabFavorite.context, R.drawable.ic_favorited))
-//        }
-//
-//        viewModel.favoriteResultDelete.observe(this) {
-//            binding.fabFavorite.setImageDrawable(ContextCompat.getDrawable(binding.fabFavorite.context, R.drawable.ic_favorite_border))
-//        }
+    }
+    private fun shareUser(username: String, userUrl: String?) {
+        val shareUser = "Follow $username on GitHub!\n$userUrl"
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_TEXT, shareUser)
+        startActivity(Intent.createChooser(intent, "Share with..."))
     }
 }

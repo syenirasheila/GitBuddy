@@ -12,9 +12,10 @@
     <string name="detail_activity">Detail</string>
     <string name="search_text">Search user</string>
     <string name="user_notfound">User not found</string>
-    <string name="back_btn">Back button</string>
+    <string name="back_btn">Back</string>
     <string name="favorite_activity">Favorited</string>
     <string name="nofavorite_users">No favorite users added yet</string>
     <string name="btn_favorite">Favorite</string>
     <string name="fab_favorite">Fab Favorite</string>
+    <string name="btn_share">Share</string>
 </resources>

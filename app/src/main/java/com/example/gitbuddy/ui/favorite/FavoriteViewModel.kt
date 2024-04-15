@@ -4,10 +4,8 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.recyclerview.widget.DiffUtil
 import com.example.gitbuddy.data.local.entity.UserEntity
 import com.example.gitbuddy.data.repository.FavoriteRepository
-import com.example.gitbuddy.utils.EntityDiffUtils
 
 
 class FavoriteViewModel (mApplication: Application): ViewModel() {

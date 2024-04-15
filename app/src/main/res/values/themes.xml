@@ -19,14 +19,14 @@
         <item name="fontFamily">@font/fredoka_semibold</item>
         <item name="android:textSize">28sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/lavender</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="TextStyle.TITLE2">
         <item name="fontFamily">@font/fredoka_semibold</item>
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/lavender</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="TextStyle.TITLE">
@@ -63,6 +63,10 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColorHint">@color/lavender</item>
         <item name="fontFamily">@font/fredoka_regular</item>
+    </style>
+
+    <style name="AppBarStyle">
+        <item name="android:background">@color/lavender</item>
     </style>
 
 </resources>

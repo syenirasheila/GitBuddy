@@ -1,20 +1,28 @@
 package com.example.gitbuddy.ui.main
 
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.isVisible
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.gitbuddy.data.local.preferences.SettingPreferences
 import com.example.gitbuddy.data.remote.model.ItemsItem
 import com.example.gitbuddy.databinding.ActivityMainBinding
 import com.example.gitbuddy.ui.detail.DetailUserActivity
 import com.example.gitbuddy.ui.favorite.FavoriteActivity
+import com.example.gitbuddy.utils.SettingViewModelFactory
 import com.example.gitbuddy.utils.UserResult
 
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 @Suppress("UNCHECKED_CAST")
 class MainActivity : AppCompatActivity() {
 
@@ -25,9 +33,13 @@ class MainActivity : AppCompatActivity() {
             Intent(this,DetailUserActivity::class.java).apply{
                 putExtra("username", user.login)
                 putExtra("avatarUrl",user.avatarUrl)
+                putExtra("userUrl",user.htmlUrl)
                 startActivity(this)
             }
         }
+    }
+    private val settingViewModel by viewModels<SettingViewModel> {
+        SettingViewModelFactory(SettingPreferences.getInstance(dataStore))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,6 +93,20 @@ class MainActivity : AppCompatActivity() {
             }
         }
         mainViewModel.getGithubUser()
+
+        settingViewModel.getThemeSettings().observe(this){
+            if(it) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                binding.switchMode.isChecked = true
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                binding.switchMode.isChecked = false
+            }
+        }
+
+        binding.switchMode.setOnCheckedChangeListener { _, isChecked ->
+            settingViewModel.saveTheme(isChecked)
+        }
     }
     private fun showNotFound(isDataNotFound: Boolean) {
         binding.apply {

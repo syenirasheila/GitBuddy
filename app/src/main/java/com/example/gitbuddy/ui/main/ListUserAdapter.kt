@@ -11,7 +11,7 @@ import com.example.gitbuddy.data.remote.model.ItemsItem
 import com.example.gitbuddy.databinding.UserCardBinding
 import com.example.gitbuddy.utils.UserDiffUtils
 
-class ListUserAdapter (private val listener:(ItemsItem) -> Unit ):
+class ListUserAdapter (private val listener:(ItemsItem) -> Unit):
 
     RecyclerView.Adapter<ListUserAdapter.UserViewHolder>() {
 

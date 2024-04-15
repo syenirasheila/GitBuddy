@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gitbuddy.data.remote.model.ItemsItem
 import com.example.gitbuddy.databinding.ActivityMainBinding
 import com.example.gitbuddy.ui.detail.DetailUserActivity
+import com.example.gitbuddy.ui.favorite.FavoriteActivity
 import com.example.gitbuddy.utils.UserResult
 
 @Suppress("UNCHECKED_CAST")
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         ListUserAdapter{ user ->
             Intent(this,DetailUserActivity::class.java).apply{
                 putExtra("username", user.login)
+                putExtra("avatarUrl",user.avatarUrl)
                 startActivity(this)
             }
         }
@@ -40,6 +42,11 @@ class MainActivity : AppCompatActivity() {
         binding.rvUsers.setHasFixedSize(true)
         binding.rvUsers.adapter = adapter
 
+
+        binding.btnFavorite.setOnClickListener{
+            val intent = Intent(this, FavoriteActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.svUser.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {

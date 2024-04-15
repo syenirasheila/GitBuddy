@@ -1,27 +1,32 @@
 package com.example.gitbuddy.ui.detail
 
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.gitbuddy.R
+import com.example.gitbuddy.data.local.entity.UserEntity
 import com.example.gitbuddy.data.remote.model.DetailUserResponse
 import com.example.gitbuddy.databinding.ActivityDetailuserBinding
 import com.example.gitbuddy.ui.detail.follow.FollowFragment
 import com.example.gitbuddy.utils.UserResult
+import com.example.gitbuddy.utils.ViewModelFactory
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 @Suppress("DEPRECATION")
 class DetailUserActivity :AppCompatActivity() {
 
-    private val viewModel by viewModels<DetailViewModel>()
     private lateinit var binding : ActivityDetailuserBinding
+    private val viewModel by viewModels<DetailViewModel> {
+        ViewModelFactory.getInstance(application)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -33,6 +38,7 @@ class DetailUserActivity :AppCompatActivity() {
         supportActionBar?.title = title
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val username = intent.getStringExtra("username") ?: ""
+        val avatarUrl = intent.getStringExtra("avatarUrl")
 
         binding.btnBack.setOnClickListener {
             onBackPressed()
@@ -116,14 +122,36 @@ class DetailUserActivity :AppCompatActivity() {
 
         viewModel.getFollowers(username)
 
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId){
-            android.R.id.home -> {
-                onBackPressed()
-                true
+        viewModel.getFavoritedByUsername(username).observe(this) { user ->
+            if (user == null) {
+                binding.fabFavorite.setImageDrawable(ContextCompat.getDrawable(binding.fabFavorite.context, R.drawable.ic_favorite_border))
+                binding.fabFavorite.setOnClickListener {
+                    viewModel.insertFavoritedUser(UserEntity(username,avatarUrl))
+                }
+            } else {
+                binding.fabFavorite.setImageDrawable(ContextCompat.getDrawable(binding.fabFavorite.context, R.drawable.ic_favorited))
+                binding.fabFavorite.setOnClickListener {
+                    viewModel.deleteFavoritedUser(user)
+                }
             }
-            else -> super.onOptionsItemSelected(item)
         }
+//        val user = intent.getParcelableExtra<UserEntity>("username")
+//
+//        binding.fabFavorite.setOnClickListener {
+//            viewModel.setFavorited(user)
+//
+//        }
+//
+//        viewModel.getFavorited(username){
+//            binding.fabFavorite.setImageDrawable(ContextCompat.getDrawable(binding.fabFavorite.context, R.drawable.ic_favorite_border))
+//        }
+//
+//        viewModel.favoriteResultSuccess.observe(this) {
+//            binding.fabFavorite.setImageDrawable(ContextCompat.getDrawable(binding.fabFavorite.context, R.drawable.ic_favorited))
+//        }
+//
+//        viewModel.favoriteResultDelete.observe(this) {
+//            binding.fabFavorite.setImageDrawable(ContextCompat.getDrawable(binding.fabFavorite.context, R.drawable.ic_favorite_border))
+//        }
     }
 }

@@ -16,4 +16,5 @@
     <string name="favorite_activity">Favorited</string>
     <string name="nofavorite_users">No favorite users added yet</string>
     <string name="btn_favorite">Favorite</string>
+    <string name="fab_favorite">Fab Favorite</string>
 </resources>

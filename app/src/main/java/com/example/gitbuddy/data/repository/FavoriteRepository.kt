@@ -19,7 +19,7 @@ class FavoriteRepository (application: Application) {
 
     fun getAllFavoritedUser(): LiveData<List<UserEntity>> = mFavoriteDao.getAllFavoritedUser()
 
-    fun getFavoritedUser(username : String): LiveData<UserEntity> = mFavoriteDao.getFavoritedUser(username)
+    fun getFavoritedByUsername(username : String): LiveData<UserEntity> = mFavoriteDao.getFavoritedByUsername(username)
 
     fun insert (user: UserEntity) {
         executorService.execute { mFavoriteDao.insert(user) }

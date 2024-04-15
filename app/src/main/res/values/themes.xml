@@ -6,8 +6,8 @@
         <item name="colorPrimaryVariant">@color/lavender</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/lavender</item>
-        <item name="colorSecondaryVariant">@color/lavender</item>
+        <item name="colorSecondary">@color/purple_200</item>
+        <item name="colorSecondaryVariant">@color/purple_200</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
@@ -17,7 +17,7 @@
 
     <style name="TextStyle.LOGO">
         <item name="fontFamily">@font/fredoka_semibold</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">28sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/lavender</item>
     </style>

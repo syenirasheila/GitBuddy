@@ -19,6 +19,7 @@ class FavoriteActivity : AppCompatActivity() {
             Intent(this, DetailUserActivity::class.java).apply{
                 putExtra("username", user.login)
                 putExtra("avatarUrl",user.avatarUrl)
+                putExtra("userUrl",user.htmlUrl)
                 startActivity(this)
             }
         }

@@ -15,6 +15,7 @@ import kotlinx.coroutines.launch
 class MainViewModel:ViewModel() {
 
     val userResult = MutableLiveData<UserResult>()
+
     fun getGithubUser() {
         viewModelScope.launch{
             flow{

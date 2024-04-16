@@ -14,5 +14,8 @@ data class UserEntity(
     val login : String = "",
 
     @ColumnInfo(name = "avatar_url")
-    val avatarUrl : String? = null
+    val avatarUrl : String? = null,
+
+    @ColumnInfo(name ="html_url")
+    val htmlUrl: String? = null
 ) : Parcelable

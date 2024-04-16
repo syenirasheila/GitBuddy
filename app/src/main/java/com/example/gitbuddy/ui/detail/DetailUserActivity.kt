@@ -133,7 +133,7 @@ class DetailUserActivity :AppCompatActivity() {
             if (user == null) {
                 binding.fabFavorite.setImageDrawable(ContextCompat.getDrawable(binding.fabFavorite.context, R.drawable.ic_favorite_border))
                 binding.fabFavorite.setOnClickListener {
-                    viewModel.insertFavoritedUser(UserEntity(username,avatarUrl))
+                    viewModel.insertFavoritedUser(UserEntity(username,avatarUrl, userUrl))
                 }
             } else {
                 binding.fabFavorite.setImageDrawable(ContextCompat.getDrawable(binding.fabFavorite.context, R.drawable.ic_favorited))

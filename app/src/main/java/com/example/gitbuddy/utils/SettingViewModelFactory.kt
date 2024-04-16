@@ -1,7 +1,5 @@
 package com.example.gitbuddy.utils
 
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.gitbuddy.data.local.preferences.SettingPreferences
